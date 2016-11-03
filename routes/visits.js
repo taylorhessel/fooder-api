@@ -2,10 +2,17 @@ var express = require('express');
 var router = express.Router();
 var queries = require('../database/queries');
 
+// Cors configuration
+var cors = require('cors');
+var corsOptions = {
+  origin: 'http://localhost:8100',
+  optionsSuccessStatus: 200
+};
+
 const oops = "Something went wrong on our end.  Please try again."
 
 // GET all visits for user
-router.get('/', function(req, res, next) {
+router.get('/', cors(corsOptions), function(req, res, next) {
 
   if (!req.query.id) {
     var err = new Error('Bad Request');
@@ -26,7 +33,7 @@ router.get('/', function(req, res, next) {
 });
 
 // POST visit for user
-router.post('/', function(req, res, next) {
+router.post('/', cors(corsOptions), function(req, res, next) {
 
   if (!(req.body.user_id && req.body.restaurant_id)) {
     var err = new Error('Bad Request');
