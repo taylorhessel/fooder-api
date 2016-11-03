@@ -2,13 +2,6 @@ var express = require('express');
 var router = express.Router();
 var queries = require('../database/queries');
 
-// Cors configuration
-var cors = require('cors');
-var corsOptions = {
-  origin: 'http://localhost:8100',
-  optionsSuccessStatus: 200
-};
-
 const oops = "Something went wrong on our end.  Please try again."
 
 // GET all visits for user
