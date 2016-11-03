@@ -5,7 +5,7 @@ var queries = require('../database/queries');
 const oops = "Something went wrong on our end.  Please try again."
 
 // GET all visits for user
-router.get('/', cors(corsOptions), function(req, res, next) {
+router.get('/', function(req, res, next) {
 
   if (!req.query.id) {
     var err = new Error('Bad Request');
@@ -26,7 +26,7 @@ router.get('/', cors(corsOptions), function(req, res, next) {
 });
 
 // POST visit for user
-router.post('/', cors(corsOptions), function(req, res, next) {
+router.post('/', function(req, res, next) {
 
   if (!(req.body.user_id && req.body.restaurant_id)) {
     var err = new Error('Bad Request');
